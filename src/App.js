@@ -31,6 +31,12 @@ function App() {
     console.log(correctAnswers);
   }
   
+  const randomizeAnswers = () => {
+    const answerArray = [];
+    incorrect.map(answer => answerArray.push(answer));
+    answerArray.splice(Math.floor(Math.random() * 4), 0, correct)
+    return answerArray;
+  }
 
   function handleSelectAnswer(id, answer) {
     // console.log(id, answer);
