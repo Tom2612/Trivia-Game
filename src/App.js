@@ -4,6 +4,7 @@ import './style.css'
 
 function App() {
   const [questions, setQuestions] = useState([]);
+  const [chosenAnswers, setChosenAnswers] = useState({});
 
   useEffect (() => {
     const getQuestions = async () => {
@@ -20,12 +21,15 @@ function App() {
     getQuestions();
   }, [])
 
-  console.log('here', questions)
+  function handleSelectAnswer(id, answer) {
+    console.log(id, answer)
+    
+  }
   
   return (
     <main>
       <h1>App</h1>
-      <QuestionForm questions={questions}/>
+      <QuestionForm questions={questions} selectAnswer={handleSelectAnswer}/>
     </main>
   );
 }
