@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import QuestionForm from './QuestionForm';
+import './style.css'
 
 function App() {
   const [questions, setQuestions] = useState([]);

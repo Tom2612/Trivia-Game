@@ -13,12 +13,12 @@ export default function QuestionItem(props) {
 
     return (
         <div>
-            <h3>{question}</h3>
+            <h3>{question.replace(/(&quot\;)/g,"\"").replace(/(&#039;)/g,"\'").replace(/(&amp;)/g,"\&")}</h3>
             {randomizeAnswers().map(answer => {
                 if(answer === correct) {
-                    return <h3 style={{color: 'red'}} className='answer'>{answer}</h3>
+                    return <h3 style={{color: 'red'}} className='answer'>{answer.replace(/(&quot\;)/g,"\"").replace(/(&#039;)/g,"\'").replace(/(&amp;)/g,"\&")}</h3>
                 } else {
-                    return <h3 style={{color: 'green'}} className='answer'>{answer}</h3>
+                    return <h3 style={{color: 'green'}} className='answer'>{answer.replace(/(&quot\;)/g,"\"").replace(/(&#039;)/g,"\'").replace(/(&amp;)/g,"\&")}</h3>
                 }
             })}
         </div>
