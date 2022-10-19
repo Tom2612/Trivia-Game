@@ -6,7 +6,6 @@ function App() {
   const [questions, setQuestions] = useState([]);
   const [start, setStart] = useState(false)
   const [correctAnswers, setCorrectAnswers] = useState([]);
-  const [chosenAnswers, setChosenAnswers] = useState([]);
 
   useEffect (() => {
     const getQuestions = async () => {
@@ -31,16 +30,15 @@ function App() {
     console.log(correctAnswers);
   }
   
-  const randomizeAnswers = () => {
-    const answerArray = [];
-    incorrect.map(answer => answerArray.push(answer));
-    answerArray.splice(Math.floor(Math.random() * 4), 0, correct)
-    return answerArray;
-  }
+  // const randomizeAnswers = () => {
+  //   const answerArray = [];
+  //   incorrect.map(answer => answerArray.push(answer));
+  //   answerArray.splice(Math.floor(Math.random() * 4), 0, correct)
+  //   return answerArray;
+  // }
 
   function handleSelectAnswer(id, answer) {
     // console.log(id, answer);
-    setChosenAnswers(prev => prev.concat(answer));
     setQuestions(prev => prev.map((question, index) => {
       return index === id ? {
         ...question,
