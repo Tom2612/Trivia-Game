@@ -4,7 +4,9 @@ import './style.css'
 
 function App() {
   const [questions, setQuestions] = useState([]);
-  const [chosenAnswers, setChosenAnswers] = useState({});
+  const [start, setStart] = useState(false)
+  const [correctAnswers, setCorrectAnswers] = useState([]);
+  const [chosenAnswers, setChosenAnswers] = useState([]);
 
   useEffect (() => {
     const getQuestions = async () => {
@@ -14,22 +16,40 @@ function App() {
         return {
           question: question.question,
           correct: question['correct_answer'],
-          incorrect: question['incorrect_answers'].map(answer=> answer)
+          incorrect: question['incorrect_answers'].map(answer=> answer),
+          chosen: ''
         }
       }));
     }
     getQuestions();
+
   }, [])
+  
+  function allCorrectAnswers() {
+    setStart(prev => !prev)
+    setCorrectAnswers(questions.map(question => question.correct));
+    console.log(correctAnswers);
+  }
+  
 
   function handleSelectAnswer(id, answer) {
-    console.log(id, answer)
-    
+    // console.log(id, answer);
+    setChosenAnswers(prev => prev.concat(answer));
+    setQuestions(prev => prev.map((question, index) => {
+      return index === id ? {
+        ...question,
+        chosen: answer
+      } : question
+    }))
+    console.log(questions)
   }
+  
   
   return (
     <main>
       <h1>App</h1>
       <QuestionForm questions={questions} selectAnswer={handleSelectAnswer}/>
+      <button onClick={allCorrectAnswers}>{!start ? 'Start Quiz' : 'Check Answers'}</button>
     </main>
   );
 }

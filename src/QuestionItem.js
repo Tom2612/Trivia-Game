@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function QuestionItem(props) {
-    const { question, correct, incorrect } = props.question;
+    const { question, correct, incorrect, chosen } = props.question;
 
     const randomizeAnswers = () => {
         const answerArray = [];
