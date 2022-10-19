@@ -11,13 +11,15 @@ function App() {
       setQuestions(data.results.map(question => {
         return {
           question: question.question,
-          'correct_answer': question['correct_answer'],
-          'incorrect_answers': question['incorrect_answers'].map(answer=> answer)
+          correct: question['correct_answer'],
+          incorrect: question['incorrect_answers'].map(answer=> answer)
         }
       }));
     }
     getQuestions();
   }, [])
+
+  console.log('here', questions)
   
   return (
     <main>
