@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function QuestionItem(props) {
-    const { question, correct, incorrect, chosen } = props.question;
+    const { question, correct, incorrect, chosen, allAnswers } = props.question;
 
     const randomizeAnswers = () => {
         const answerArray = [];
@@ -10,7 +10,7 @@ export default function QuestionItem(props) {
         return answerArray;
     }
 
-    const answers = randomizeAnswers().map(answer => (
+    const answers = allAnswers.map(answer => (
         <h3 className='answer' onClick={() => props.selectAnswer(props.id, answer)}>
             {answer.replace(/(&quot\;)/g,"\"").replace(/(&#039;)/g,"\'").replace(/(&amp;)/g,"\&")}
         </h3>

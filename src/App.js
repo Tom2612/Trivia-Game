@@ -15,27 +15,34 @@ function App() {
         return {
           question: question.question,
           correct: question['correct_answer'],
-          incorrect: question['incorrect_answers'].map(answer=> answer),
+          incorrect: question['incorrect_answers'],
+          allAnswers: question['incorrect_answers'].splice(Math.floor(Math.random() * 4), 0, question['correct_answer']),
           chosen: ''
         }
       }));
     }
     getQuestions();
+    console.log(questions);
 
   }, [])
   
   function allCorrectAnswers() {
     setStart(prev => !prev)
     setCorrectAnswers(questions.map(question => question.correct));
-    console.log(correctAnswers);
+    // console.log(correctAnswers);
   }
   
-  // const randomizeAnswers = () => {
-  //   const answerArray = [];
-  //   incorrect.map(answer => answerArray.push(answer));
-  //   answerArray.splice(Math.floor(Math.random() * 4), 0, correct)
-  //   return answerArray;
-  // }
+  const randomizeAnswers = () => {
+    const answerArray = [];
+    setQuestions(prev => prev.map(question => {
+      question.incorrect.map(answer => answerArray.push(answer));
+      answerArray.splice(Math.floor(Math.random() * 4), 0, question.correct);
+      return {
+        ...question,
+        allAnswers: answerArray
+      }
+    }))
+  }
 
   function handleSelectAnswer(id, answer) {
     // console.log(id, answer);
@@ -52,7 +59,7 @@ function App() {
   return (
     <main>
       <h1>App</h1>
-      <QuestionForm questions={questions} selectAnswer={handleSelectAnswer}/>
+      <QuestionForm questions={questions} selectAnswer={handleSelectAnswer} randAnswers={randomizeAnswers}/>
       <button onClick={allCorrectAnswers}>{!start ? 'Start Quiz' : 'Check Answers'}</button>
     </main>
   );
