@@ -11,7 +11,6 @@ export default function QuestionForm(props) {
                             selectAnswer={props.selectAnswer} 
                             id={index} 
                             key={index}
-                            randAnswers={props.randAnswers}
                         />
             })}
             
