@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import htmlFix from './htmlFixer';
 
 export default function QuestionItem(props) {
-    const { question, allAnswers } = props.question;
+    const { question, answers } = props.question;
 
-    const answerElements = allAnswers.map(answer => (
-        <h3 className='answer' onClick={() => props.selectAnswer(props.id, answer)}>
-            {htmlFix(answer)}
+    const answerElements = answers.map(answer => (
+        <h3 className='answer' onClick={(e) => props.selectAnswer(answer)} >
+            {htmlFix(answer.text)}
         </h3>
     ))
 
