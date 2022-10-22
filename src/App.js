@@ -15,7 +15,7 @@ function App() {
           question: question.question,
           correct: question['correct_answer'],
           incorrect: question['incorrect_answers'],
-          allAnswers: [...question['incorrect_answers']].concat(question['correct_answer']),
+          allAnswers: answerArray(question),
           chosen: ''
         }
       }));
@@ -23,6 +23,19 @@ function App() {
     getQuestions();
 
   }, [])
+
+  const answerArray = (question) =>{
+    const answers = [...question['incorrect_answers']].concat(question['correct_answer'])
+    const array = [];
+    for(let i = 0; i < 4; i++) {
+        let randomElement = answers[Math.floor(Math.random() * 4)];
+        while (array.includes(randomElement)){
+            randomElement = answers[Math.floor(Math.random() * 4)];
+        }
+        array.push(randomElement);
+    }
+    return array;
+}
 
   function handleSelectAnswer(id, answer) {
     console.log(id, answer);
