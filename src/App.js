@@ -67,10 +67,21 @@ function App() {
 
   function handleSelectAnswer(id, answer) {
     console.log(answer);
-    // setQuestions(prev => prev.map((question, index) => {
-      
-    // }))
+    setQuestions((prev, index) => {
+      return prev[index] === id ? 
+        prev.answers.map(answer => {
+          return answer.text === answer? {...answer, chosen: !answer.chosen} : answer
+        })
+        // .text === answer ? 
+        //   {
+        //     ...prev.answers,
+        //     chosen: true
+        //   } : prev.answers
+        : prev
+        }
+      )
 
+    console.log(questions)
     // const { classList } = e.target;
     // classList.contains('chosen') ? classList.remove('chosen') : classList.add('chosen')
     // setQuestions(prev => prev.map((question, index) => {
