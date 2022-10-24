@@ -4,22 +4,14 @@ import './style.css'
 
 function App() {
   const [questions, setQuestions] = useState([]);
+  const [answers, setAnswers] = useState([]);
   const [start, setStart] = useState(false)
 
   useEffect (() => {
     const getQuestions = async () => {
       const res = await fetch('https://opentdb.com/api.php?amount=5&type=multiple');
       const data = await res.json();
-      //Old way of storing data
-      // setQuestions(data.results.map(question => {
-      //   return {
-      //     question: question.question,
-      //     correct: question['correct_answer'],
-      //     incorrect: question['incorrect_answers'],
-      //     allAnswers: answerArray(question),
-      //     chosen: ''
-      //   }
-      // }));
+
       setQuestions(data.results.map(question => {
         return {
           question: question.question,
@@ -28,10 +20,23 @@ function App() {
         }
       }))
     }
+
     getQuestions();
-    console.log(questions)
+    getAnswers();
 
   }, [])
+
+  useEffect(() => {
+    console.log(answers)
+  }, [answers])
+
+  function getAnswers() {
+    const answerArray = [];
+    questions.map(question => {
+      answerArray.push(question.answers)
+    })
+    setAnswers(answerArray)
+  }
 
   const answerArray = (question) =>{
     const answers = [...question['incorrect_answers']].concat(question['correct_answer']);
@@ -51,47 +56,22 @@ function App() {
       }
     });
 }
-// Old way of processing Answers
-//   const answerArray = (question) =>{
-//     const answers = [...question['incorrect_answers']].concat(question['correct_answer'])
-//     const array = [];
-//     for(let i = 0; i < 4; i++) {
-//         let randomElement = answers[Math.floor(Math.random() * 4)];
-//         while (array.includes(randomElement)){
-//             randomElement = answers[Math.floor(Math.random() * 4)];
-//         }
-//         array.push(randomElement);
-//     }
-//     return array;
-// }
 
   function handleSelectAnswer(id, answer) {
-    console.log(answer);
-    setQuestions((prev, index) => {
-      return prev[index] === id ? 
-        prev.answers.map(answer => {
-          return answer.text === answer? {...answer, chosen: !answer.chosen} : answer
-        })
-        // .text === answer ? 
-        //   {
-        //     ...prev.answers,
-        //     chosen: true
-        //   } : prev.answers
-        : prev
-        }
-      )
+    // console.log(answer);
+    // setQuestions((prev) => {
+    //   return prev[id].answers.map(answer => {
+    //     return answer.text = answer ? {
+    //       ...answer,
+    //       chosen: !answer.chosen
+    //     } : answer
+    //   })
+    // })
+    }
 
+  useEffect(() => {
     console.log(questions)
-    // const { classList } = e.target;
-    // classList.contains('chosen') ? classList.remove('chosen') : classList.add('chosen')
-    // setQuestions(prev => prev.map((question, index) => {
-    //   return index === id ? {
-    //     ...question,
-    //     chosen: answer
-    //   } : question
-    // }))
-    // console.log(questions)
-  }
+  }, [questions])
   
   
   return (
