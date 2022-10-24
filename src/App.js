@@ -22,7 +22,7 @@ function App() {
     }
 
     getQuestions();
-    getAnswers();
+    getAnswers(questions);
 
   }, [])
 
@@ -30,11 +30,12 @@ function App() {
     console.log(answers)
   }, [answers])
 
-  function getAnswers() {
+  function getAnswers(questions) {
     const answerArray = [];
     questions.map(question => {
       answerArray.push(question.answers)
     })
+    console.log('answers', answerArray)
     setAnswers(answerArray)
   }
 
