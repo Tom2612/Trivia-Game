@@ -25,4 +25,5 @@ export default function htmlFix(string) {
         .replace(/(&deg;)/g,"\°")
         .replace(/(&lt;)/g,"\<")
         .replace(/(&gt;)/g,"\>")
+        .replace(/(&Delta;)/g,"\Δ")
 }
