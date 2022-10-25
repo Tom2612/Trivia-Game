@@ -5,7 +5,7 @@ export default function QuestionItem(props) {
     const { question, answers } = props.question;
 
     const answerElements = answers.map(answer => (
-        <h3 className='answer' onClick={() => props.selectAnswer(props.id, answer)} >
+        <h3 className='answer' onClick={() => props.selectAnswer(props.id, answer, question)} >
             {htmlFix(answer.text)}
         </h3>
     ))

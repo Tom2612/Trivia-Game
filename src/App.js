@@ -22,22 +22,8 @@ function App() {
     }
 
     getQuestions();
-    getAnswers(questions);
 
   }, [])
-
-  useEffect(() => {
-    console.log(answers)
-  }, [answers])
-
-  function getAnswers(questions) {
-    const answerArray = [];
-    questions.map(question => {
-      answerArray.push(question.answers)
-    })
-    console.log('answers', answerArray)
-    setAnswers(answerArray)
-  }
 
   const answerArray = (question) =>{
     const answers = [...question['incorrect_answers']].concat(question['correct_answer']);
@@ -58,20 +44,63 @@ function App() {
     });
 }
 
-  function handleSelectAnswer(id, answer) {
-    // console.log(answer);
+  function handleSelectAnswer(id, ananswer, question) {
+    console.log(ananswer, question)
+    const newAnswers = [...questions[id].answers];
+    newAnswers.map(answer => {
+    if (answer.text == ananswer.text) {
+      answer.chosen = true;
+    } else if (answer.text !== ananswer.text && ananswer.chosen) {
+      answer.chosen = false;
+    }})
+
+    const newQuestions = [...questions];
+    newQuestions.map(question => {
+      if(question.question === question) {
+        question.answers = newAnswers;
+      }
+    })
+
+    setQuestions([...newQuestions])
+
+    console.log('newQuestions object', newQuestions)
+    // console.log('newAnswers', newAnswers);
+
+    // setQuestions(prev => {
+    //   prev.map(item => { return item.question === question ? {...item, answers: [...newAnswers]} : item
+      //   if (item.question === question) {
+      //     console.log('item', item.question, question)
+      //     return {...item, answers: [...newAnswers] }
+      //   } else {
+      //     console.log('not found')
+      //     return {...item}
+      //   }
+      // })
+    // })})
+    // console.log('newQuestions', questions)
+
     // setQuestions((prev) => {
-    //   return prev[id].answers.map(answer => {
-    //     return answer.text = answer ? {
-    //       ...answer,
-    //       chosen: !answer.chosen
-    //     } : answer
-    //   })
+    //   const newAnswers = [...prev[id].answers]
+    //   newAnswers.map(answer => {
+    //     // console.log('answer', answer.text.toString()===ananswer.text, ananswer.text)
+    //     if (answer.text == ananswer.text) {
+    //       console.log('found', answer)
+    //       answer.chosen = true;
+    //       // const obj = {...answer, chosen: true}
+    //       // console.log(obj);
+    //       // newAnswers.splice(id, 1, obj)
+    //       // array.push(obj)
+    //     } else if (answer.text !== ananswer.text && answer.chosen) {
+    //       answer.chosen = false;
+    //   }})
+
+    //   console.log('new', newAnswers)
+    //   return [...prev]
     // })
     }
 
   useEffect(() => {
-    console.log(questions)
+    console.log('updated questions in useEffect', questions)
   }, [questions])
   
   
