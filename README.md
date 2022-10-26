@@ -33,6 +33,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
+
 If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
@@ -68,3 +69,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Coding used
+
+UseEffect - I figured I could use this to track changes to a 'stateful item' - this really helped to 'click' the concept of the dependency array! I tracked changes to the answer array for each question object hoping to see it change when an answer was selected (and therefore console.log the questions object), this helped me narrow down what my code was and was not diong.
+
+Data - Storing the question and answer data had a couple of different renditions. I originally tried to keep questions and answers in separate objects, but then decided each question should be its own object with an array of answers, each with a chosen and correct true/false value. Learning to both navigate and alter embedded objects like this has been one of the main challenges I have faced getting this to work.
