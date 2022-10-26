@@ -55,7 +55,11 @@ function App() {
     setQuestions(prev => prev.map(question => {
       return question.question === question ? {...question, answers: newAnswers } : question
     }))
-  }  
+  }
+
+  function handleSubmitQuiz(){
+    
+  }
   
   return (
     <main>
