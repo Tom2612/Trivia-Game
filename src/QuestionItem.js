@@ -7,7 +7,7 @@ export default function QuestionItem(props) {
     const answerElements = answers.map(answer => (
         <h3 
             className='answer' 
-            onClick={() => props.selectAnswer(props.id, answer, question)} 
+            onClick={() => props.selectAnswer(props.id, answer)} 
             style={answer.chosen ? {color: 'blue'}: null}
         >
             {htmlFix(answer.text)}
