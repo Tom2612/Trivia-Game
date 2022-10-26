@@ -5,7 +5,11 @@ export default function QuestionItem(props) {
     const { question, answers } = props.question;
 
     const answerElements = answers.map(answer => (
-        <h3 className='answer' onClick={() => props.selectAnswer(props.id, answer, question)} >
+        <h3 
+            className='answer' 
+            onClick={() => props.selectAnswer(props.id, answer, question)} 
+            style={answer.chosen ? {color: 'blue'}: null}
+        >
             {htmlFix(answer.text)}
         </h3>
     ))

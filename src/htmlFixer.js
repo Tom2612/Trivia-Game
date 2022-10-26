@@ -26,4 +26,5 @@ export default function htmlFix(string) {
         .replace(/(&lt;)/g,"\<")
         .replace(/(&gt;)/g,"\>")
         .replace(/(&Delta;)/g,"\Δ")
+        .replace(/(&lrm;)/g,"\→")
 }

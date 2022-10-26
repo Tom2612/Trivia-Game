@@ -50,7 +50,7 @@ function App() {
     newAnswers.map(answer => {
     if (answer.text == ananswer.text) {
       answer.chosen = true;
-    } else if (answer.text !== ananswer.text && ananswer.chosen) {
+    } else if (answer.text !== ananswer.text && answer.chosen) {
       answer.chosen = false;
     }})
 
@@ -61,7 +61,11 @@ function App() {
       }
     })
 
-    setQuestions([...newQuestions])
+    setQuestions(prev => prev.map(question => {
+      return question.question === question ? {...question, answers: newAnswers } : question
+    }))
+
+    // setQuestions([...newQuestions])
 
     console.log('newQuestions object', newQuestions)
     // console.log('newAnswers', newAnswers);
