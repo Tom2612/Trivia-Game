@@ -49,6 +49,10 @@ function App() {
     });
   }
 
+  function handleStartQuiz() {
+    setStart(prev => !prev);
+  }
+
   function handleSelectAnswer(id, ananswer) {
     const newAnswers = [...questions[id].answers];
     newAnswers.map(answer => {
@@ -76,9 +80,14 @@ function App() {
   
   return (
     <main>
-      <h1>App</h1>
-      <QuestionForm questions={questions} selectAnswer={handleSelectAnswer} answersChecked={answersChecked}/>
-      <button onClick={handleSubmitQuiz}>{!start ? 'Start Quiz' : 'Check Answers'}</button>
+      <h1>Triviapp!</h1>
+      {start && <QuestionForm questions={questions} selectAnswer={handleSelectAnswer} answersChecked={answersChecked}/>}
+      {start ? 
+        <button onClick={!answersChecked ? handleSubmitQuiz : null} className='btn--submit'>Check Answers</button> 
+        :
+        <button onClick={handleStartQuiz} className='btn--start'>Start Quiz</button>
+      }
+      {/* <button onClick={handleSubmitQuiz}>{!start ? 'Start Quiz' : 'Check Answers'}</button> */}
       <h4>Correct answers: {correctCount}</h4>
     </main>
   );

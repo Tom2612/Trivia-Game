@@ -4,24 +4,24 @@ import htmlFix from './htmlFixer';
 export default function QuestionItem(props) {
     const { question, answers } = props.question;
 
-    const answerElements = answers.map(answer => (
+    const answerElements = answers.map((answer, index) => (
         <h3 
-            onClick={() => props.selectAnswer(props.id, answer)} 
-            // className={answer.chosen ? 'answer chosen': 'answer'}
+            onClick={!props.answersChecked ? () => props.selectAnswer(props.id, answer) : null} 
             className={applyStyles(answer)}
+            key={index}
         >
             {htmlFix(answer.text)}
         </h3>
     ))
 
-    //Want to conditionally add styles here
+    //Conditionally add styles here
     function applyStyles(answer) {
         if(!props.answersChecked) {
             return answer.chosen ? 'answer chosen' : 'answer'
-        } else if (props.answersChecked && answer.chosen && answer.correct) {
-            return 'correct'
+        } else if (props.answersChecked && answer.correct) {
+            return 'answer correct'
         } else if (props.answersChecked && answer.chosen && !answer.correct) {
-            return 'wrong'
+            return 'answer wrong'
         }
     }
 
