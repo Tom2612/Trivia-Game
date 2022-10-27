@@ -11,6 +11,7 @@ export default function QuestionForm(props) {
                             selectAnswer={props.selectAnswer} 
                             id={index} 
                             key={index}
+                            answersChecked={props.answersChecked}
                         />
             })}
             

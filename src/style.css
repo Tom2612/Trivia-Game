@@ -9,3 +9,9 @@ body {
 .chosen { 
     color: blue;
 }
+.correct{
+    color: green;
+}
+.wrong {
+    color: red;
+}
