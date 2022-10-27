@@ -22,13 +22,17 @@ export default function QuestionItem(props) {
             return 'answer correct'
         } else if (props.answersChecked && answer.chosen && !answer.correct) {
             return 'answer wrong'
+        } else {
+            return 'answer'
         }
     }
 
     return (
-        <div id={props.id}>
-            <h3>{props.id + 1}) {htmlFix(question)}</h3>
-            {answerElements}
+        <div id={props.id} className="question-item">
+            <h3 className="question">{props.id + 1}) {htmlFix(question)}</h3>
+            <div className="container--answers">
+                {answerElements}
+            </div>
         </div>
     )
 }

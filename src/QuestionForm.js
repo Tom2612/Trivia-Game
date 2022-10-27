@@ -4,7 +4,7 @@ import QuestionItem from './QuestionItem';
 export default function QuestionForm(props) {
     
     return (
-        <div>
+        <div className="question-form">
             {props.questions.map((question, index) => {
                 return <QuestionItem 
                             question={question} 
