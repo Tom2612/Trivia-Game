@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import QuestionForm from './QuestionForm';
-import './style.css'
+import Overlay from './Overlay';
+import './style.css';
 
 function App() {
   const [questions, setQuestions] = useState([]);
@@ -81,14 +82,21 @@ function App() {
   return (
     <main>
       <h1>Triviapp!</h1>
-      {start && <QuestionForm questions={questions} selectAnswer={handleSelectAnswer} answersChecked={answersChecked}/>}
-      {start ? 
-        <button onClick={!answersChecked ? handleSubmitQuiz : null} className='btn--submit'>Check Answers</button> 
-        :
-        <button onClick={handleStartQuiz} className='btn--start'>Start Quiz</button>
-      }
-      {/* <button onClick={handleSubmitQuiz}>{!start ? 'Start Quiz' : 'Check Answers'}</button> */}
-      <h4>Correct answers: {correctCount}</h4>
+      {!start ? <Overlay /> : null}
+      <div className="container">
+        {start && <QuestionForm questions={questions} selectAnswer={handleSelectAnswer} answersChecked={answersChecked}/>}
+        {!answersChecked ? start ? 
+          <button onClick={!answersChecked ? handleSubmitQuiz : null} className='btn--submit'>Check Answers</button> 
+          :
+          <button onClick={handleStartQuiz} className='btn--start'>Start Quiz</button>
+          :
+          null
+        }
+        {answersChecked && <h4 className="finish-message">
+          {correctCount > 0 ? `Congratulations, you got ${correctCount} out of 5!` : 'Better luck next time!'}
+          </h4>
+        }
+      </div>
     </main>
   );
 }
