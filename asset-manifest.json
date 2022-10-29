@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Trivia-Game/static/css/main.d24479aa.css",
+    "main.js": "/Trivia-Game/static/js/main.01c84b05.js",
+    "index.html": "/Trivia-Game/index.html",
+    "main.d24479aa.css.map": "/Trivia-Game/static/css/main.d24479aa.css.map",
+    "main.01c84b05.js.map": "/Trivia-Game/static/js/main.01c84b05.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d24479aa.css",
+    "static/js/main.01c84b05.js"
+  ]
+}
