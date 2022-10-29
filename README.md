@@ -1,77 +1,25 @@
-# Getting Started with Create React App
+# Trivia app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was the final solo challenge for the Scrimba React Basics course.
 
-## Available Scripts
+## The challenge
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Build a trivia app. Get question and answer data from an external API.
 
 ### Coding used
 
 UseEffect - I figured I could use this to track changes to a 'stateful item' - this really helped to 'click' the concept of the dependency array! I tracked changes to the answer array for each question object hoping to see it change when an answer was selected (and therefore console.log the questions object), this helped me narrow down what my code was and was not diong.
 
 Data - Storing the question and answer data had a couple of different renditions. I originally tried to keep questions and answers in separate objects, but then decided each question should be its own object with an array of answers, each with a chosen and correct true/false value. Learning to both navigate and alter embedded objects like this has been one of the main challenges I have faced getting this to work.
+
+Git - I went hard on using git in this project. I have incorporated branches to work on features throughout, something completely new to me. I have also had to merge conflicts as I accidentally editted both my local version and the version directly on github without first pulling/pushing.
+
+map rendering - Mapping through data structures to render elements on the page. Always like an opportunity to practice Array methods. This also went hand-in-hand with conditionally styling elements based on props.
+
+### What I have gained from doing this
+
+A depper understanding of how to manipulate and store data from an API. Whilst usually free to do so however you wish in projects, you need to do it with thought as to how that data is going to challenge you accessing parts at a later date!
+
+I also got to extra styling practice using flexbox and grid. The more I use both of these, the more natural they feel to me.
+
+Finally, I hope my code is clean enough to read. I really focussed on condensing it as much as possible without trying to abstract it too much.
