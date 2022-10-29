@@ -8,6 +8,7 @@ function App() {
   const [start, setStart] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
   const [answersChecked, setAnswersChecked] = useState(false);
+  const [restart, setRestart] = useState(false);
 
   useEffect (() => {
     const getQuestions = async () => {
@@ -25,7 +26,7 @@ function App() {
 
     getQuestions();
 
-  }, [])
+  }, [restart]);
 
   useEffect(() => {
     console.log(questions)
@@ -78,6 +79,14 @@ function App() {
     })
     setAnswersChecked(prev => !prev)
   }
+
+  function resetGame() {
+    setQuestions([]);
+    setStart(prev => !prev);
+    setAnswersChecked(false);
+    setCorrectCount(0);
+    setRestart(prev => !prev);
+  }
   
   return (
     <main>
@@ -92,9 +101,13 @@ function App() {
           :
           null
         }
-        {answersChecked && <h4 className="finish-message">
-          {correctCount > 0 ? `Congratulations, you got ${correctCount} out of 5!` : 'Better luck next time!'}
-          </h4>
+        {answersChecked && 
+          <div className="results">
+            <h4 className="finish-message">
+            {correctCount > 0 ? `Congratulations, you got ${correctCount} out of 5!` : 'Better luck next time!'}
+            </h4>
+            <button onClick={resetGame} className="btn--reset">Reset</button>
+          </div>
         }
       </div>
     </main>

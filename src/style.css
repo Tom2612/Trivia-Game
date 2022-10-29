@@ -64,6 +64,7 @@ h1 {
     padding: 10px;
     border: 1px solid black;
     border-radius: 50px;
+    cursor: pointer;
 }
 .chosen { 
     color: #0d6efd;
@@ -89,7 +90,26 @@ h1 {
     font-size: 1.4rem;
     color: #0d6efd;
     width: 200px;
+    cursor: pointer;
+}
+.btn--reset {
+    padding: 5px;
+    border: 1px solid black;
+    background: none;
+    border-radius: 50px;
+    font-family: inherit;
+    font-size: 1.4rem;
+    width: 100px;
+    cursor: pointer;
 }
 .finish-message {
+    display: inline;
     font-size: 2.5rem;
+    margin-right: 20px;
+}
+.results {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
