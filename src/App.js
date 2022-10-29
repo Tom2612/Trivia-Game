@@ -81,7 +81,7 @@ function App() {
   
   return (
     <main>
-      <h1>Triviapp!</h1>
+      <h1>Triviapp</h1>
       {!start ? <Overlay /> : null}
       <div className="container">
         {start && <QuestionForm questions={questions} selectAnswer={handleSelectAnswer} answersChecked={answersChecked}/>}
